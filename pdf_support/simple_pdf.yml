@@ -3,5 +3,5 @@ name: simple PDF parsing
 description: simple PDF parsing
 type: pdf_to_text
 args:
-  pdf: "assets/gandalf.pdf"
-expected_output_regex: "Gandalf"
+  path: "assets/gandalf.pdf"
+expected_output_regex: "Gandalf.*H0rTm1iI"
