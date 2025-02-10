@@ -1,5 +1,6 @@
 id: simple_pdf
 name: simple PDF parsing
+vision: true
 description: simple PDF parsing
 type: pdf_to_text
 args:
