@@ -1,0 +1,16 @@
+id: no_params_tool
+name: no_params_tool
+description: Eval to confirm that tool calls with no params work
+type: prompt
+args:
+  stream: true
+  system_prompt: "You are a helpful bot"
+  message: "Look up the categories please"
+  tools:
+    -
+      name: "categories"
+      description: "Look up the categories"
+expected_tool_call:
+  name: categories
+  params: { }
+
