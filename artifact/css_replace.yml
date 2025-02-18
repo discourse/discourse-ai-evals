@@ -1,0 +1,10 @@
+id: css_replace_artifact
+name: CSS Replace
+description: Replace a large chunk of CSS in an artifact
+type: edit_artifact
+args:
+  css_path: "assets/css_replace/main.css"
+  js_path: "assets/css_replace/main.js"
+  html_path: "assets/css_replace/main.html"
+  instructions_path: "assets/css_replace/instructions.txt"
+expected_output_regex: "transform: skew\\(-5deg\\);"
