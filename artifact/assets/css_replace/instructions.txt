@@ -1,0 +1,248 @@
+Update the CSS with a brutalist design. Replace the current CSS with:
+
+```css
+:root {
+  --primary: #ff0000;
+  --secondary: #000000;
+  --accent: #0000ff;
+  --background: #ffffff;
+  --text: #000000;
+}
+
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  font-family: 'Courier Prime', monospace;
+  color: var(--text);
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+#presentation-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: #ffffff;
+  border: 8px solid black;
+  box-sizing: border-box;
+}
+
+.scanlines {
+  display: none;
+}
+
+.slides-wrapper {
+  position: relative;
+  width: 90%;
+  height: 85%;
+  margin: 2% auto;
+  border: 4px solid black;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.2s steps(5);
+  padding: 40px;
+  box-sizing: border-box;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #000000;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+.slide:not(.active) {
+  transform: translateX(100%) rotate(2deg);
+}
+
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(#000 1px, transparent 1px),
+    linear-gradient(90deg, #000 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+h1 {
+  color: var(--text);
+  font-size: 5rem;
+  margin: 60px 0 40px;
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: 0.9;
+  transform: scaleY(1.2);
+  text-align: left;
+  border-bottom: 8px solid black;
+  padding-bottom: 20px;
+}
+
+h2 {
+  color: var(--text);
+  font-size: 3.5rem;
+  margin: 40px 0;
+  text-transform: uppercase;
+  font-weight: 900;
+  transform: scaleY(1.1);
+  border-left: 20px solid var(--primary);
+  padding-left: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0;
+}
+
+li {
+  margin: 30px 0;
+  padding: 15px;
+  position: relative;
+  font-size: 1.8rem;
+  line-height: 1.4;
+  background: #ffffff;
+  border: 3px solid black;
+  transform: skew(-2deg);
+  transition: transform 0.3s;
+}
+
+li:hover {
+  transform: skew(0deg) scale(1.02);
+  background: #000;
+  color: #fff;
+}
+
+li::before {
+  content: '►';
+  position: absolute;
+  left: -30px;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.controls {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  background: #ffffff;
+  padding: 20px;
+  border: 4px solid black;
+}
+
+button {
+  background: #ffffff;
+  border: 4px solid black;
+  color: var(--text);
+  font-family: 'Courier Prime', monospace;
+  padding: 15px 30px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.2s;
+  transform: skew(-5deg);
+}
+
+button:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: skew(-5deg) scale(1.1);
+}
+
+.digital-clock {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: var(--text);
+  background: #ffffff;
+  padding: 15px;
+  border: 4px solid black;
+  font-family: 'Courier Prime', monospace;
+  transform: rotate(2deg);
+}
+
+.progress {
+  font-family: 'Courier Prime', monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  background: #000;
+  color: #fff;
+  padding: 10px 20px;
+  transform: skew(-5deg);
+}
+
+.retro-logo {
+  margin-top: auto;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  text-align: right;
+  padding: 20px;
+  border-top: 4px solid black;
+  transform: skew(-2deg);
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.5rem; }
+  li { font-size: 1.2rem; }
+  .controls { width: 90%; }
+}
+
+/* Add visual noise effect */
+.slide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAElBMVEUAAAD8/vz08vT09PT0+PT///+e9DmyAAAABXRSTlMAGhslIyZ8Y1EAAAA1SURBVDjLY2AYBaNg2AJGYQgQlIdwmCFcBzgXyuVFcEVhXEe4EARQxQWRxUmTH1Jy+XADALaqEf6SJ0OFAAAAAElFTkSuQmCC");
+  opacity: 0.03;
+  pointer-events: none;
+}
+```
+
+This brutalist design features:
+1. High contrast black and white base
+2. Bold, geometric shapes
+3. Raw, unpolished aesthetics
+4. Aggressive typography
+5. Intentionally skewed elements
+6. Thick borders and stark lines
+7. Minimal color usage (only for emphasis)
+8. Unconventional layout choices
+9. Visible grid systems
+10. Interactive elements with dramatic transformations

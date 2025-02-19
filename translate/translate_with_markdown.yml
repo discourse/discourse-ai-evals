@@ -1,0 +1,28 @@
+id: translate_with_markdown
+name: Translate with markdown
+description: A simple eval for translation with markdown links
+type: helper
+args:
+  name: translate
+  input: "Please **read** [my website](https://www.sam.com) and tell me **if** you like it?"
+  locale: he
+judge:
+  llm: gpt-4o
+  pass_rating: 8
+  prompt: |
+    Is the following:
+
+    [[[
+    {{output}}
+    ]]]
+
+    a faithful Hebrew translation of:
+
+    [[[
+    {{input}}
+    ]]]
+
+    - Ensure markdown structure is preserved (bold / italics)
+    - Ensure all links are preserved
+
+

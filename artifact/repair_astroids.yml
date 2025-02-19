@@ -1,0 +1,10 @@
+id: repair_astroids
+name: Repair Astroids
+description: full repair of a totally broken artifact
+type: edit_artifact
+args:
+  css_path: "assets/astroids/main.css"
+  js_path: "assets/astroids/main.js"
+  html_path: "assets/astroids/main.html"
+  instructions_path: "assets/astroids/instructions.txt"
+

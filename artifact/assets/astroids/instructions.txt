@@ -1,0 +1,17 @@
+Rework the JavaScript to remove all leftover change markers & duplicate code. Address the issues by simplifying and structuring the code:
+
+### Instructions:
+1. **Remove All Change Markers**: Remove any `<<<<<<<`, `=======`, `>>>>>>>` remnants from previous conflicting merges or update attempts.
+2. **Centralize `generateShape()` Logic**: Ensure this method is only called once per object creation (e.g., in `Asteroid` or `Spaceship` constructors). Remove duplicates completely.
+3. **Cleanup of Classes and Objects**:
+   - Separate and clearly define shared properties of asteroids, bullets, and spaceship.
+   - Ensure all elements (asteroids, bullets, spaceship states) are cleanly updated and rendered in the game loop.
+4. **Improve Game Flow**:
+   - Ensure all global variables (score, lives, gameOver, etc.) and game state are properly governed and readable.
+   - Make restarting smoother and consistent.
+5. **Fix Edge Cases**:
+   - Check collisions and interactions to ensure they logically work without overlaps or missing functionality.
+   - Manage object removal more robustly when out-of-bounds or destroyed.
+6. **Final Testing**: The game should run with proper features and no residual issues.
+
+Result: A clean, error-free, and structured codebase where functionalities are compartmentalized, and the overall gameplay logic is functional and easier to maintain.
