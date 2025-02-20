@@ -1,0 +1,24 @@
+id: simple_smart_dates
+name: Simple Smart Dates
+description: A simple smart dates evaluation
+type: helper
+args:
+  name: replace_dates
+  input: "Discourse was officially released on the 26th of August of 2014."
+judge:
+  llm: gpt-40
+  pass_rating: 8
+  prompt: |
+    Is the following:
+
+    [[[
+    {{output}}
+    ]]]
+
+    correctly replacing the date in the following text:
+
+    [[[
+    {{input}}
+    ]]]
+
+    to a format like [date=2014-08-26 timezone="UTC"] with the correct date?

@@ -1,0 +1,22 @@
+id: simple_explain
+name: Simple Explain
+description: A simple explain evaluation
+type: helper
+args:
+  name: explain
+  input: "I need to submit my PR on GitHub."
+judge:
+  llm: gpt-4o
+  pass_rating: 8
+  prompt: |
+    Is the following:
+
+    [[[
+    {{output}}
+    ]]]
+
+    a faithful explanation about Pull Requests on GitHub based on the following text:
+
+    [[[
+    {{input}}
+    ]]]
