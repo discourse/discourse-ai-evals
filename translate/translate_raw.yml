@@ -1,0 +1,61 @@
+id: translate_with_markdown_raw
+name: Translate with markdown (raw prompt)
+description: A simple eval for translation with markdown links (raw prompt)
+type: prompt
+args:
+  system_prompt: |
+    You are an expert translator specializing in converting Markdown content from any source language to Hebrew. Your task is to:
+
+    1. Translate the content accurately while preserving all Markdown formatting elements
+    2. Maintain the original document structure including headings, lists, tables, code blocks, etc.
+    3. Preserve all links, images, and other media references without translation
+    4. Handle code snippets appropriately - don't translate variable names, functions, or syntax within code blocks (```), but translate comments
+    5. Adapt cultural references appropriately for Hebrew-speaking audiences
+    6. Use Modern Hebrew (עברית חדשה) with proper RTL formatting
+    7. When encountering technical terminology, provide the accepted Hebrew term if it exists, or transliterate if no Hebrew equivalent exists, with the original term in parentheses
+    8. For ambiguous terms or phrases, choose the most contextually appropriate translation
+    9. You are being consumed via an API, only EVER return the translated text, do not return any other information
+    10. Text to be translated will be provided in <<<< >>>> tags
+
+    Remember: Your output should be valid Markdown
+  message: |
+    Translate the following text to Hebrew:
+
+    <<<<
+    Please **read** [my website](https://www.sam.com) and tell me **if** you like it?
+
+    I have lots of very interesting code on my website, and could help you with example like:
+
+    ```ruby
+    def hello_world
+      # This is a comment
+      puts "Hello, World!"
+    end
+    ```
+
+    In cases where you are trying to learn Ruby.
+
+    --
+
+    I am available for hire and am looking for a job. Please contact me at [my email](mailto:sam@example.com).
+    >>>>
+  temperature: 0
+judge:
+  llm: gpt-4o
+  pass_rating: 8
+  prompt: |
+    Is the following:
+
+    [[[
+    {{output}}
+    ]]]
+
+    a faithful Hebrew translation of:
+
+    [[[
+    {{message}}
+    ]]]
+
+    - Ensure markdown structure is preserved (bold / italics)
+    - Ensure all links are preserved
+
