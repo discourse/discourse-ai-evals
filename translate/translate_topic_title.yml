@@ -1,0 +1,47 @@
+id: translate_topic_title
+name: Translate topic titles
+description: A simple eval for translation of topic titles
+type: prompt
+args:
+  prompts:
+    - |
+      Translate this topic title to Chinese
+      - Preserve the original title structure
+  messages:
+    - "_Rendering_ `markdown` in topic titles is alright"
+    - "🎉 Welcome to our community! 🚀"
+    - "Привет всем участникам форума"
+    - "Question: Why doesn't my code work? (PHP/JS)"
+    - "This is an extremely long topic title that approaches the maximum character limit but is still legitimate and meaningful"
+    - "Using <div> tags in your posts"
+    - "👨‍👩‍👧‍👦 Family Emoji and διεθνές κείμενο"
+    - "∑(x²) = ∫f(x)dx for Beginners"
+    - "如何使用 Discourse 论坛"
+    - "مرحبا بكم في منتدى Discourse"
+    - "Help me figure out why the sun is blue"
+    - "\"To be or not to be\" - Discussion Thread"
+    - "#Discourse @team feature requests"
+    - "SELECT * FROM users WHERE name = 'John'"
+    - "Change topic title Adjust the character limit arbitrarily"
+    - "Is there any Discourse SEO Plugin?"
+  temperature: 0
+judge:
+  llm: gpt-4o
+  pass_rating: 8
+  prompt: |
+    Is the following:
+
+    [[[
+    {{output}}
+    ]]]
+
+    a faithful Chinese translation of:
+
+    [[[
+    {{message}}
+    ]]]
+
+    - Ensure markdown structure is preserved (bold / italics)
+    - Ensure all links are preserved
+    - Ensure the language of both the input and output are not the same
+
