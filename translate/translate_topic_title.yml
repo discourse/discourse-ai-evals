@@ -6,11 +6,13 @@ args:
   prompts:
     - |
       Translate this topic title to Chinese
-      - Preserve the original title structure
+      - Keep the original language when it is a proper noun or technical term
+      - The translation should be around the same length as the original
   messages:
-    - "_Rendering_ `markdown` in topic titles is alright"
+    - "_Rendering_ `markdown` in topic titles is a _bad_ idea?"
     - "🎉 Welcome to our community! 🚀"
     - "Привет всем участникам форума"
+    - "Re: Your site is ready! - Figli Delle Stelle"
     - "Question: Why doesn't my code work? (PHP/JS)"
     - "This is an extremely long topic title that approaches the maximum character limit but is still legitimate and meaningful"
     - "Using <div> tags in your posts"
@@ -29,7 +31,7 @@ judge:
   llm: gpt-4o
   pass_rating: 8
   prompt: |
-    Is the following:
+    Is the following title:
 
     [[[
     {{output}}
@@ -41,7 +43,4 @@ judge:
     {{message}}
     ]]]
 
-    - Ensure markdown structure is preserved (bold / italics)
-    - Ensure all links are preserved
-    - Ensure the language of both the input and output are not the same
-
+    - The length of the translated title should be around the same as the original
