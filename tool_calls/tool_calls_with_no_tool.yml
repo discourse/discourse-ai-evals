@@ -1,0 +1,27 @@
+id: tool_call_no_tools
+name: Tool calls with no tool
+description: Eval see what happens after a tool call comes back and we resubmit with no tools, does the llm get confused?
+type: prompt
+args:
+  output_thinking: true
+  temperature: 0
+  system_prompt: "You are a helpful bot"
+  message: "echo the text sam and then respond to me with the text done"
+  tools:
+    -
+      name: "echo"
+      description: "will echo the text"
+      parameters:
+        - name: "text"
+          type: "string"
+          description: "the text to echo"
+          required: true
+  followup:
+    tools: []
+    message:
+      type: "tool"
+      id: ["tool_call", "id"]
+      name: ["tool_call", "name"]
+      content: "content was echoed"
+expected_output_regex: "one"
+
