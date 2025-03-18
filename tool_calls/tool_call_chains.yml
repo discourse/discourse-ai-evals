@@ -1,0 +1,37 @@
+id: tool_call_chains
+name: Tool call chains
+description: Call multiple tools in multiple tests
+type: prompt
+args:
+  - id: addition-test
+    name: Addition
+    description: Test the addition works in subsequent tool calls
+    temperature: 0
+    stream: false
+    prompts:
+      - "You are a helpful bot"
+    messages:
+      - "Add 1 and 2"
+    tools:
+      -
+        name: "addition"
+        description: "Will add two numbers"
+        parameters:
+          - name: "text"
+            type: "string"
+            description: "the numbers to add"
+            required: true
+    followups:
+      -
+        tools: []
+        message:
+          type: "tool"
+          id: ["tool_call", "id"]
+          name: ["tool_call", "name"]
+          content: "3"
+      -
+        tools: []
+        message:
+          type: "user"
+          content: "add 4 to that"
+expected_output_regex: "add.*4.*3"
