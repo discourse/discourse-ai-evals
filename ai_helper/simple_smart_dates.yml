@@ -1,9 +1,8 @@
 id: simple_smart_dates
 name: Simple Smart Dates
 description: A simple smart dates evaluation
-type: helper
+feature: ai_helper:smart_dates
 args:
-  name: replace_dates
   input: "Discourse was officially released on the 26th of August of 2014."
 judge:
   llm: gpt-40

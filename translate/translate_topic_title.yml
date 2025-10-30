@@ -1,7 +1,7 @@
 id: translate_topic_title
 name: Translate topic titles
 description: A simple eval for translation of topic titles
-type: prompt
+feature: custom:prompt
 args:
   prompts:
     - |

@@ -1,7 +1,7 @@
 id: simple_summarization
 name: Simple Summarization
 description: A basic evaluation of topic summarization
-type: summarization
+feature: summarization:topic_summaries
 args:
   input: |
     Dogs are man's best friend. They are loyal, loving, and protective. 

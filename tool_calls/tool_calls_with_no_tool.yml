@@ -1,7 +1,7 @@
 id: tool_call_no_tools
 name: Tool calls with no tool
 description: Eval see what happens after a tool call comes back and we resubmit with no tools, does the llm get confused?
-type: prompt
+feature: custom:prompt
 args:
   output_thinking: true
   temperature: 0
@@ -24,4 +24,3 @@ args:
       name: ["tool_call", "name"]
       content: "content was echoed"
 expected_output_regex: "one"
-

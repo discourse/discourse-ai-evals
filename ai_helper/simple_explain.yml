@@ -1,9 +1,8 @@
 id: simple_explain
 name: Simple Explain
 description: A simple explain evaluation
-type: helper
+feature: ai_helper:explain
 args:
-  name: explain
   input: "I need to submit my PR on GitHub."
 judge:
   llm: gpt-4o

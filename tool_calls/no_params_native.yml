@@ -1,7 +1,7 @@
 id: no_params_tool
 name: no_params_tool
 description: Eval to confirm that tool calls with no params work
-type: prompt
+feature: custom:prompt
 args:
   stream: true
   system_prompt: "You are a helpful bot"
@@ -13,4 +13,3 @@ args:
 expected_tool_call:
   name: categories
   params: { }
-
