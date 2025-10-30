@@ -1,7 +1,7 @@
 id: css_replace_artifact
 name: CSS Replace
 description: Replace a large chunk of CSS in an artifact
-type: edit_artifact
+feature: custom:edit_artifact
 args:
   css_path: "assets/css_replace/main.css"
   js_path: "assets/css_replace/main.js"

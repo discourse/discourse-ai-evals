@@ -1,7 +1,7 @@
 id: tool_call_chains
 name: Tool call chains
 description: Call multiple tools in multiple tests
-type: prompt
+feature: custom:prompt
 args:
   - id: addition-test
     name: Addition

@@ -1,6 +1,7 @@
 id: translate_raw
 name: Translate raw text
 description: A simple eval for translating plain text
+feature: custom:prompt
 type: prompt
 args:
   prompts:
@@ -46,4 +47,3 @@ judge:
     - The translation will only contain either Chinese or English that cannot be translated, and no other languages
     - There should be no additional content besides the translation
     - The translation must not attempt to answer questions in the original text
-

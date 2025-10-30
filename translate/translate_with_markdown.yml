@@ -1,9 +1,8 @@
 id: translate_with_markdown
 name: Translate with markdown
 description: A simple eval for translation with markdown links
-type: helper
+feature: ai_helper:translator
 args:
-  name: translate
   input: "Please **read** [my website](https://www.sam.com) and tell me **if** you like it?"
   locale: he
 judge:
@@ -24,5 +23,4 @@ judge:
 
     - Ensure markdown structure is preserved (bold / italics)
     - Ensure all links are preserved
-
 
