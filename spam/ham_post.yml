@@ -1,0 +1,11 @@
+id: ham_post
+name: Classify ham post
+description: A basic classification of a ham post
+feature: spam:inspect_posts
+args:
+  topic_title: "Tips for keeping succulents alive indoors?"
+  input: |
+    Hey everyone — I'm new here and trying to keep succulents alive in a north-facing apartment. 
+    
+    I've tried watering every week but they still get leggy. What has worked for you?
+expected_output: "false"

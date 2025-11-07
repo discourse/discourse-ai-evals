@@ -1,0 +1,17 @@
+id: inference_generate_concepts
+name: Generate Concepts from Incident Review
+description: Ensures the concept-finder persona extracts relevant tags from an incident write-up
+feature: inference:generate_concepts
+args:
+  conversation:
+    - |
+      (1) Ops: "Friday's outage started when the feature flag service stalled and our monitoring
+      failed to alert because the Grafana dashboard filter was misconfigured."
+    - |
+      (3) Infra: "We're adding automatic baseline alerts for queue depth plus tagging the playbooks
+      with incident response and on-call rotation metadata."
+  existing_concepts:
+    - grafana
+    - observability
+    - feature flag
+expected_output_regex: (?i)(?=.*grafana)(?=.*observability|incident response)

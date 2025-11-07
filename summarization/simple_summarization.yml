@@ -3,13 +3,14 @@ name: Simple Summarization
 description: A basic evaluation of topic summarization
 feature: summarization:topic_summaries
 args:
-  input: |
-    Dogs are man's best friend. They are loyal, loving, and protective. 
-    They are also very intelligent and can be trained to do many things. 
-    Dogs are used as service animals, therapy animals, and even as police dogs. 
-    They are also great companions and can help reduce stress and anxiety. Dogs are truly amazing animals.
+  conversation:
+    - |
+      Dogs are man's best friend. They are loyal, loving, and protective.
+      They are also very intelligent and can be trained to do many things.
+      Dogs are used as service animals, therapy animals, and even as police dogs.
+      They are also great companions and can help reduce stress and anxiety. Dogs are truly amazing animals.
 judge:
-  llm: gpt-40
+  llm: gpt-4o
   pass_rating: 8
   prompt: |
     Is the following:
@@ -21,5 +22,5 @@ judge:
     a faithful summary of the following text:
 
     [[[
-    {{input}}
+    {{conversation}}
     ]]]

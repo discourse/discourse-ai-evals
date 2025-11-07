@@ -1,0 +1,30 @@
+id: simple_title_suggestions
+name: Simple Title Suggestions
+description: Evaluates the title suggestions helper on a release-notes style paragraph
+feature: ai_helper:title_suggestions
+args:
+  input: |
+    The moderation dashboard shipped a queue for long-running reports this week.
+    Staff can escalate spam waves into that queue and triage them without leaving the page.
+    We want a concise changelog headline that captures the new queue and its benefit.
+judge:
+  llm: gpt-4o
+  pass_rating: 8
+  prompt: |
+    Evaluate the list of title suggestions below (one per line) for the release note snippet.
+
+    Requirements for a passing set:
+      - At least one title mentions triage or queue.
+      - Titles must stay under 15 words and read like concise changelog headlines.
+
+    Suggestions under review:
+
+    [[[
+    {{output}}
+    ]]]
+
+    Source notes:
+
+    [[[
+    {{input}}
+    ]]]

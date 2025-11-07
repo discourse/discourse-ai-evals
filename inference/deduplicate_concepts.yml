@@ -1,0 +1,11 @@
+id: inference_deduplicate_concepts
+name: Deduplicate Concept List
+description: Validates the concept deduplicator collapses redundant tags
+feature: inference:deduplicate_concepts
+args:
+  concepts:
+    - API access
+    - api access
+    - api authentication
+    - authentication flow
+expected_output_regex: (?i)(?=.*api access)(?=.*authentication)

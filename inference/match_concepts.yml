@@ -1,0 +1,13 @@
+id: inference_match_concepts
+name: Match Concepts for Release Notes
+description: Confirms the concept matcher selects only applicable tags from a provided list
+feature: inference:match_concepts
+args:
+  input: |
+    The release lets moderators triage abusive reports in a unified queue and automatically
+    tags any escalation with the requester group so staff can follow up faster.
+  concepts:
+    - moderation queue
+    - staff workflows
+    - mobile push
+expected_output_regex: (?i)(moderation queue|staff workflows)
