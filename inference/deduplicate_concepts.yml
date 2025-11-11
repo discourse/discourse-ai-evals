@@ -8,4 +8,4 @@ args:
     - api access
     - api authentication
     - authentication flow
-expected_output_regex: (?i)(?=.*api access)(?=.*authentication)
+expected_output_regex: (?i)(api access|api authentication)

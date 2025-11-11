@@ -1,26 +1,26 @@
 id: translate_with_markdown
-name: Translate with markdown
-description: A simple eval for translation with markdown links
-feature: ai_helper:translator
+name: Translate short markdown text
+description: Ensures the short text translator keeps inline markdown untouched
+feature: translation:short_text_translator
 args:
   input: "Please **read** [my website](https://www.sam.com) and tell me **if** you like it?"
-  locale: he
+  target_locale: he
 judge:
   llm: gpt-4o
   pass_rating: 8
   prompt: |
-    Is the following:
+    Is the following translation in {{target_locale}}:
 
     [[[
     {{output}}
     ]]]
 
-    a faithful Hebrew translation of:
+    faithful to this markdown input?
 
     [[[
     {{input}}
     ]]]
 
-    - Ensure markdown structure is preserved (bold / italics)
-    - Ensure all links are preserved
-
+    - Preserve inline formatting (bold, italics, code)
+    - All markdown links must remain untouched
+    - Do not add commentary beyond the translation itself

@@ -14,4 +14,25 @@ args:
     - grafana
     - observability
     - feature flag
-expected_output_regex: (?i)(?=.*grafana)(?=.*observability|incident response)
+judge:
+  llm: gpt-4o
+  pass_rating: 8
+  prompt: |
+    Evaluate the list of inferred concepts (one per line) for the incident summary below.
+
+    Passing criteria:
+      - At least one concept references Grafana or dashboards.
+      - At least one concept references observability, monitoring, or incident response.
+      - Concepts are short (<= 3 words) and relevant to the outage summary.
+
+    Concepts:
+
+    [[[
+    {{output}}
+    ]]]
+
+    Conversation:
+
+    [[[
+    {{conversation}}
+    ]]]
