@@ -1,0 +1,43 @@
+id: short_summarization
+name: Hot Topic Gist
+description: Evaluates short, recency-focused gists for active topics
+feature: summarization:gists
+args:
+  conversation:
+    - |
+      (1) Lila: "We're rolling out the new emoji reaction bar, but QA flagged jitter on mobile.
+      I've paused the deploy until we confirm if it's a CSS bug or a rendering issue."
+    - |
+      (8) Nikhil: "Reproduced the jitter on Safari only. Android Chrome is fine. I'm checking if the
+      animation easing we added yesterday is the culprit."
+    - |
+      (11) Rowan: "Backing out the easing removes the jitter, but we still need the animation for
+      parity with chat. Maybe cap the frame rate instead?"
+    - |
+      (14) Lila: "Frame-rate cap works when we drop the glow effect. Packaging a hotfix now and will
+      resume the rollout Monday 14:00 UTC if nobody sees new regressions."
+    - |
+      (16) Jo: "Verified the hotfix on staging; glow is gone but motion looks smooth. No other reports
+      so far."
+judge:
+  llm: gpt-4o
+  pass_rating: 8
+  prompt: |
+    Evaluate whether the following summary is a good "gist" for an active topic.
+
+    A good gist MUST:
+      - Fit within 40 words.
+      - Describe the latest developments while keeping the original issue in mind.
+      - Stay neutral, avoid repeating the topic title, and omit filler language.
+
+    Gist under review:
+
+    [[[
+    {{output}}
+    ]]]
+
+    Source discussion:
+
+    [[[
+    {{conversation}}
+    ]]]

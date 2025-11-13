@@ -1,0 +1,10 @@
+id: simple_markdown_table
+name: Simple Markdown Table
+description: Ensures the markdown-table helper normalizes semi-structured text
+feature: ai_helper:markdown_tables
+args:
+  input: |
+    Name=Alex, role: SRE, status active
+    Name=Tori, role: Designer, status backup
+    Name=Ravi, role: Support, status active
+expected_output_regex: "(?i)\\| name \\| role \\| status \\|[\\s\\S]*alex\\s\\|\\ssre\\s\\|\\sactive"

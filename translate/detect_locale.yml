@@ -1,0 +1,32 @@
+id: detect_locale
+name: Detect locales
+description: Validates the locale detector persona across a few common languages
+feature: translation:locale_detector
+args:
+  cases:
+    - input: "¿Cómo estás? Necesito ayuda con la configuración de mi foro."
+      expected_locale: es
+    - input: "今日は新しいチャットルームのアイデアについて話しませんか？"
+      expected_locale: ja
+    - input: "Bonjour à tous, voici un rappel pour la réunion de demain."
+      expected_locale: fr
+judge:
+  llm: gpt-4o
+  pass_rating: 10
+  prompt: |
+    The locale detector responded with:
+
+    [[[
+    {{output}}
+    ]]]
+
+    for the following text:
+
+    [[[
+    {{message}}
+    ]]]
+
+    The expected locale is `{{expected_locale}}`.
+
+    - Score 10 if the detected locale exactly matches the expected value (case insensitive)
+    - Otherwise score 1 and explain the mismatch briefly

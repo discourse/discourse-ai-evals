@@ -1,0 +1,12 @@
+id: spam_post
+name: Classify spam post
+description: A basic classification of a spam post
+feature: spam:inspect_posts
+args:
+  topic_title: "Congratulations! 🎉 You have been randomly selected as today's LUCKY WINNER."
+  input: |
+    👉 Click here 👉 [suspicious-link.biz/free-iphone] to claim your prize before it's gone!
+    💰 No purchase required! Limited TIME offer! Act FAST!!!
+
+    Reply with your credit card info to confirm delivery.
+expected_output: "true"
