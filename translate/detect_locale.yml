@@ -11,22 +11,8 @@ args:
     - input: "Bonjour à tous, voici un rappel pour la réunion de demain."
       expected_locale: fr
 judge:
-  llm: gpt-4o
   pass_rating: 10
-  prompt: |
-    The locale detector responded with:
-
-    [[[
-    {{output}}
-    ]]]
-
-    for the following text:
-
-    [[[
-    {{message}}
-    ]]]
-
-    The expected locale is `{{expected_locale}}`.
-
-    - Score 10 if the detected locale exactly matches the expected value (case insensitive)
-    - Otherwise score 1 and explain the mismatch briefly
+  criteria: |
+    - Detected locale must exactly match the expected locale (case-insensitive).
+    - Response should be limited to the locale identifier; no extra commentary.
+    - Any deviation from the expected locale should be treated as a failure.

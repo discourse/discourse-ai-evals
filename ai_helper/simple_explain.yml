@@ -5,17 +5,8 @@ feature: ai_helper:explain
 args:
   input: "I need to submit my PR on GitHub."
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Is the following:
-
-    [[[
-    {{output}}
-    ]]]
-
-    a faithful explanation about Pull Requests on GitHub based on the following text:
-
-    [[[
-    {{input}}
-    ]]]
+  criteria: |
+    - Explain the concept in plain language using only the information from the source text.
+    - Include the essential details of how GitHub Pull Requests work and why they are used.
+    - Stay concise (2–4 sentences), neutral in tone, and avoid referencing the original prompt.

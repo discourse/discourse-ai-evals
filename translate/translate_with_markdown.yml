@@ -6,21 +6,8 @@ args:
   input: "Please **read** [my website](https://www.sam.com) and tell me **if** you like it?"
   target_locale: he
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Is the following translation in {{target_locale}}:
-
-    [[[
-    {{output}}
-    ]]]
-
-    faithful to this markdown input?
-
-    [[[
-    {{input}}
-    ]]]
-
-    - Preserve inline formatting (bold, italics, code)
-    - All markdown links must remain untouched
-    - Do not add commentary beyond the translation itself
+  criteria: |
+    - Translate the text into {{target_locale}} while preserving inline Markdown (bold, italics, code) and links exactly.
+    - Meaning and tone must match the source sentence.
+    - Response should contain only the translated sentence—no explanations or extra markup.

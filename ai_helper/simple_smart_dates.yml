@@ -5,19 +5,8 @@ feature: ai_helper:smart_dates
 args:
   input: "Discourse was officially released on the 26th of August of 2014."
 judge:
-  llm: gpt-40
   pass_rating: 8
-  prompt: |
-    Is the following:
-
-    [[[
-    {{output}}
-    ]]]
-
-    correctly replacing the date in the following text:
-
-    [[[
-    {{input}}
-    ]]]
-
-    to a format like [date=2014-08-26 timezone="UTC"] with the correct date?
+  criteria: |
+    - Replace the human-readable date with the Discourse `[date=YYYY-MM-DD timezone="UTC"]` markup.
+    - Preserve the original sentence structure and all non-date wording.
+    - Ensure the numeric date is accurate (year 2014, month 08, day 26) and do not add commentary.

@@ -9,22 +9,9 @@ args:
     Coffee goes cold in the mug.
   custom_prompt: "Rewrite the scene as a calming three-line haiku about debugging late at night."
 judge:
-  llm: gpt-4o
   pass_rating: 7
-  prompt: |
-    Determine whether the following output obeys the custom prompt:
-      - Exactly three poetic lines (newline separated).
-      - Evokes a calm late-night debugging scene.
-      - Mentions sensory details (sound, light, or temperature) at least once.
-
-    Candidate haiku:
-
-    [[[
-    {{output}}
-    ]]]
-
-    Original notes:
-
-    [[[
-    {{input}}
-    ]]]
+  criteria: |
+    - Output must be a haiku with exactly three newline-separated lines.
+    - Tone should feel calm and reflective, centered on late-night debugging.
+    - Include at least one sensory detail (sound, light, or temperature) drawn from the notes.
+    - Rework the provided notes; do not introduce unrelated imagery or commentary.

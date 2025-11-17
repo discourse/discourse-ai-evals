@@ -20,24 +20,8 @@ args:
       (16) Jo: "Verified the hotfix on staging; glow is gone but motion looks smooth. No other reports
       so far."
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Evaluate whether the following summary is a good "gist" for an active topic.
-
-    A good gist MUST:
-      - Fit within 40 words.
-      - Describe the latest developments while keeping the original issue in mind.
-      - Stay neutral, avoid repeating the topic title, and omit filler language.
-
-    Gist under review:
-
-    [[[
-    {{output}}
-    ]]]
-
-    Source discussion:
-
-    [[[
-    {{conversation}}
-    ]]]
+  criteria: |
+    - One-sentence gist under 40 words.
+    - Capture the newest development (hotfix plan, status) while referencing the original emoji jitter issue.
+    - Neutral tone, no needless intro text or repetition of the topic title.

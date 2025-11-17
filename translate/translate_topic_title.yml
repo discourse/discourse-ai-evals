@@ -23,21 +23,8 @@ args:
     - input: "Change topic title Adjust the character limit arbitrarily"
     - input: "Is there any Discourse SEO Plugin?"
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Evaluate whether this translated title in {{target_locale}}:
-
-    [[[
-    {{output}}
-    ]]]
-
-    accurately represents the original title:
-
-    [[[
-    {{message}}
-    ]]]
-
-    - Preserve proper nouns, emoji, math notation, and inline code
-    - Keep the translated title roughly the same length and style as the original
-    - No additional commentary is allowed
+  criteria: |
+    - Produce a concise title in {{target_locale}} that accurately reflects the original text.
+    - Preserve proper nouns, emoji, math notation, punctuation, and inline code.
+    - Keep the title roughly the same length and tone; do not add commentary or explanations.

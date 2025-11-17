@@ -7,22 +7,8 @@ args:
     - query: "Best practices for welcoming new members on Discourse"
     - query: "How can admins monitor login security events?"
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    The discovery reply should complement search by giving a short, source-backed overview.
-    Evaluate the response:
-
-    [[[
-    {{output}}
-    ]]]
-
-    for the search query:
-
-    [[[
-    {{query}}
-    ]]]
-
-    - The answer must be under 120 words and ideally between 40 and 80 words
-    - It should contain at least one Markdown link (e.g., `[text](https://example.com)`)
-    - The content must provide helpful guidance relevant to the query rather than meta commentary
+  criteria: |
+    - Provide a concise (40–120 word) answer that addresses the search query directly.
+    - Include at least one Markdown link to a relevant resource.
+    - Give practical guidance rather than meta commentary or apologies.

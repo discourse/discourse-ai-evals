@@ -10,17 +10,8 @@ args:
       Dogs are used as service animals, therapy animals, and even as police dogs.
       They are also great companions and can help reduce stress and anxiety. Dogs are truly amazing animals.
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Is the following:
-
-    [[[
-    {{output}}
-    ]]]
-
-    a faithful summary of the following text:
-
-    [[[
-    {{conversation}}
-    ]]]
+  criteria: |
+    - Summarize the conversation in 2–4 sentences capturing the central idea and key attributes of dogs.
+    - Mention loyalty/protection plus at least one concrete use case (service animals, therapy, police, etc.).
+    - Stay in the same language as the source, neutral tone, no direct quotes or new facts.
