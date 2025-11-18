@@ -107,22 +107,8 @@ args:
     - input: |
         "How do I say Discourse in Chinese? Is Discourse a term known in other languages, can you share?"
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Is the following translation to {{target_locale}}:
-
-    [[[
-    {{output}}
-    ]]]
-
-    faithful to this source?
-
-    [[[
-    {{message}}
-    ]]]
-
-    - Preserve Markdown and HTML without adding or removing tags
-    - Links must remain intact
-    - Do not add extra commentary beyond the translation itself
-    - Ensure the answer is actually written in {{target_locale}}
+  criteria: |
+    - Translate each case into {{target_locale}} while preserving Markdown, HTML, and links exactly.
+    - Keep the tone and meaning of the source; no summaries or added commentary.
+    - Entire response must be written in {{target_locale}}.

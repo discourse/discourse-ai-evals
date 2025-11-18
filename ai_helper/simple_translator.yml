@@ -6,21 +6,8 @@ args:
   input: "Necesito arreglar este error antes del lanzamiento del lunes por la mañana."
   locale: en
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Evaluate whether the JSON below (field "output") is a faithful English translation
-    of the provided Spanish sentence. Accept minor wording differences as long as the meaning
-    (fixing a bug before Monday morning's launch) remains intact and the tone stays professional.
-
-    Translation JSON:
-
-    [[[
-    {{output}}
-    ]]]
-
-    Source sentence:
-
-    [[[
-    {{input}}
-    ]]]
+  criteria: |
+    - Translation must faithfully express the meaning of the Spanish source (fixing a bug before Monday morning's launch).
+    - Tone should stay professional and neutral; no slang or embellishment.
+    - Output should be plain English text inside the JSON field without extra commentary.

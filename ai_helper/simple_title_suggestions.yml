@@ -8,23 +8,8 @@ args:
     Staff can escalate spam waves into that queue and triage them without leaving the page.
     We want a concise changelog headline that captures the new queue and its benefit.
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Evaluate the list of title suggestions below (one per line) for the release note snippet.
-
-    Requirements for a passing set:
-      - At least one title mentions triage or queue.
-      - Titles must stay under 15 words and read like concise changelog headlines.
-
-    Suggestions under review:
-
-    [[[
-    {{output}}
-    ]]]
-
-    Source notes:
-
-    [[[
-    {{input}}
-    ]]]
+  criteria: |
+    - Provide multiple concise, changelog-style title options (one per line, each < 15 words).
+    - At least one suggestion must mention a queue or triage benefit.
+    - Titles should summarize the new moderation queue without fluff or imperative language.

@@ -7,22 +7,9 @@ args:
     - query: "How do I configure S3 backups and test restores for my Discourse forum?"
     - query: "What moderation workflows help triage long-running Discourse flags?"
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    A HyDE response should look like a plausible forum post that elaborates on the source query.
-    Review the generated text:
-
-    [[[
-    {{output}}
-    ]]]
-
-    Does it expand and stay relevant to the query below, adding concrete detail instead of simply restating it?
-
-    [[[
-    {{query}}
-    ]]]
-
-    - Award a high score only if the output contains at least two informative sentences
-    - The prose should reuse important terms from the query and introduce supporting steps, risks, or examples
-    - Reject answers that are meta commentary, apologies, or that ask the user for more information
+  criteria: |
+    - Output should resemble a plausible forum post that elaborates on the query with concrete details.
+    - Include at least two informative sentences that reuse key terms from the query.
+    - Add supporting steps, risks, or examples instead of restating the question.
+    - Reject answers that are meta commentary, apologies, or requests for more information.

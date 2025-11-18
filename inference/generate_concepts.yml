@@ -15,24 +15,9 @@ args:
     - observability
     - feature flag
 judge:
-  llm: gpt-4o
   pass_rating: 8
-  prompt: |
-    Evaluate the list of inferred concepts (one per line) for the incident summary below.
-
-    Passing criteria:
-      - At least one concept references Grafana or dashboards.
-      - At least one concept references observability, monitoring, or incident response.
-      - Concepts are short (<= 3 words) and relevant to the outage summary.
-
-    Concepts:
-
-    [[[
-    {{output}}
-    ]]]
-
-    Conversation:
-
-    [[[
-    {{conversation}}
-    ]]]
+  criteria: |
+    - Concepts must be short (three words or fewer) and directly related to the incident summary.
+    - Include at least one concept mentioning Grafana or dashboards.
+    - Include at least one concept tied to observability, monitoring, or incident response.
+    - Do not invent ideas absent from the conversation.
