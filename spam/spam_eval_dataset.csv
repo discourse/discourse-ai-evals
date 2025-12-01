@@ -1,0 +1,11 @@
+content,expected_output
+"Congrats! You won a free cruise. Visit bit.ly/claim-now and enter your credit card.",true
+"Reminder: The Q3 planning meeting is tomorrow at 9am. Please bring your slides.",false
+"🔥 LIMITED OFFER 🔥 Buy followers now at spamco.biz and get 80% off!",true
+"Can someone help me debug the new theme component? It's throwing a 500.",false
+"Your account is compromised! Send 0.05 BTC to this wallet to keep it safe.",true
+"Weekly stand-up notes: we shipped the new chat sidebar. Great job team!",false
+"Click here for a FREE gift card: http://giftcards.example/claim?user=12345",true
+"Looking for recommendations on the best image optimization plugin.",false
+"Earn $5,000 a day working from home. Reply with your PayPal email now!",true
+"FYI: I documented the backup process in the shared folder if anyone needs it.",false
