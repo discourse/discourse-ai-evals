@@ -1,0 +1,22 @@
+id: tool_chain_termination
+name: Tool Chain Termination Test
+description: Eval see how well tool call none is supported in a chain of tools
+feature: custom:prompt
+args:
+  output_thinking: true
+  chain_length: 2
+  max_tool_calls: 2
+  prompt: "You are a helpful bot that helps eval tool call support for llms, be sure to use parallel tool calls and follow user instruction carefully."
+  message: "echo the text sam and and then echo the text bob, then echo the text jane, finally return the value of 3+3"
+  tool_results:
+    echo: "{{text}}"
+  tools:
+    -
+      name: "echo"
+      description: "will echo the text"
+      parameters:
+        - name: "text"
+          type: "string"
+          description: "the text to echo"
+          required: true
+expected_output_regex: "6"
