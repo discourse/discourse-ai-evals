@@ -1,0 +1,17 @@
+id: proofread_preserves_quote_block
+name: Preserve Discourse quote blocks when proofreading
+description: Ensures proofreading leaves Discourse quote blocks verbatim while fixing surrounding text
+feature: ai_helper:proofread
+args:
+  input: |
+    [quote="eviltrout, post:1, topic:123"]
+    Teh feature shoud not touch quoted text.
+    [/quote]
+
+    I definately agree with this.
+judge:
+  pass_rating: 9
+  criteria: |
+    - Leave the Discourse quote block exactly unchanged, including the opening tag, closing tag, inner text, typos, and punctuation.
+    - Proofread only the author's non-quoted sentence after the quote and correct the misspelling "definately".
+    - Preserve the existing quote-block structure and paragraph breaks.
