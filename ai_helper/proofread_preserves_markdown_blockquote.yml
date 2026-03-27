@@ -1,0 +1,15 @@
+id: proofread_preserves_markdown_blockquote
+name: Preserve markdown blockquotes when proofreading
+description: Ensures proofreading fixes the author's text without editing quoted markdown lines
+feature: ai_helper:proofread
+args:
+  input: |
+    I definately agree with this:
+
+    > Teh feature shoud not touch quoted text.
+judge:
+  pass_rating: 9
+  criteria: |
+    - Leave the markdown blockquote line exactly unchanged, including its typo and punctuation.
+    - Proofread only the author's non-quoted sentence and correct the misspelling "definately".
+    - Preserve the markdown structure and paragraph breaks.
