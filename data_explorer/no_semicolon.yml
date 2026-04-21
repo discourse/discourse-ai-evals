@@ -1,0 +1,15 @@
+id: no_semicolon
+name: No trailing semicolon
+description: SQL must not end with a semicolon
+feature: data_explorer:query_generation
+args:
+  input: "Top 10 users by post count"
+judge:
+  pass_rating: 7
+  criteria: |
+    Check these rules:
+    1. The SQL must NOT end with a semicolon
+    2. It should query users and posts
+    3. It should have a LIMIT or TOP clause
+    4. ID columns should be aliased as user_id (not just id)
+    Rate 10 if all rules met, 5 if semicolon present, 0 if query is invalid.

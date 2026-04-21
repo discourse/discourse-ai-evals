@@ -1,0 +1,7 @@
+id: user_id_alias
+name: Uses user_id alias for link rendering
+description: ID columns must be aliased as user_id not bare id
+feature: data_explorer:query_generation
+args:
+  input: "Show me the top 20 users who received the most likes"
+expected_output_regex: "user_id"

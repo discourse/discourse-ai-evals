@@ -1,0 +1,7 @@
+id: simple_count
+name: Simple user count query
+description: Generate a basic count query with no params - should work on first try
+feature: data_explorer:query_generation
+args:
+  input: "Show me total user count"
+expected_output_regex: "(?i)select.*count.*from.*users"

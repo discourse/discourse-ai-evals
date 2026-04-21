@@ -1,0 +1,16 @@
+id: date_params
+name: Query with date parameters
+description: "Should use CAST() for date params, never :: casting"
+feature: data_explorer:query_generation
+args:
+  input: "Show me signups between two dates"
+expected_output_regex: "\\[params\\]"
+judge:
+  pass_rating: 7
+  criteria: |
+    The SQL must:
+    1. Declare two date parameters using -- [params] syntax
+    2. Use CAST(:param AS date) or CAST(:param AS timestamp), NEVER :param::date
+    3. Query the users table
+    4. Not end with a semicolon
+    Rate 10 if all criteria met, 5 if params exist but use :: casting, 0 if no params.

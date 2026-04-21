@@ -1,0 +1,7 @@
+id: pm_query
+name: Private message query
+description: Should use archetype = 'private_message' for PMs
+feature: data_explorer:query_generation
+args:
+  input: "How many PMs were sent last month"
+expected_output_regex: "private_message"

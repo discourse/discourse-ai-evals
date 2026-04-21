@@ -1,0 +1,7 @@
+id: exclude_staged
+name: Excludes staged users
+description: User queries should filter out staged users
+feature: data_explorer:query_generation
+args:
+  input: "Show me signups across time"
+expected_output_regex: "staged"
