@@ -1,0 +1,15 @@
+id: cast_not_double_colon
+name: Uses CAST not double colon for params
+description: "Date params must use CAST(:param AS date), never :param::date"
+feature: data_explorer:query_generation
+args:
+  input: "Show me posts created between two specific dates"
+judge:
+  pass_rating: 7
+  criteria: |
+    Check the SQL for parameter casting:
+    1. It must have a -- [params] block with date parameters
+    2. If any param is cast, it must use CAST(:param AS type) syntax
+    3. It must NOT contain :param_name::type (double colon casting on a param)
+    4. Regular column casts like created_at::date are fine
+    Rate 10 if all correct, 3 if uses :: on params, 0 if no params at all.

@@ -1,0 +1,15 @@
+id: topic_param
+name: Query with topic_id parameter
+description: Should use topic_id param type
+feature: data_explorer:query_generation
+args:
+  input: "Show me all replies and who posted them for a specific topic"
+expected_output_regex: "\\[params\\]"
+judge:
+  pass_rating: 7
+  criteria: |
+    The SQL must:
+    1. Have a -- [params] block with a topic_id parameter
+    2. Filter posts by that topic
+    3. Return user information for each reply
+    Rate 10 if uses topic_id param type, 7 if uses int param, 3 if no params.

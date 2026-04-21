@@ -1,0 +1,14 @@
+id: signups_with_params
+name: Signups with date range params
+description: Must generate -- [params] block with date parameters
+feature: data_explorer:query_generation
+args:
+  input: "Show me signups across a varied period of time"
+expected_output_regex: "\\[params\\]"
+judge:
+  pass_rating: 7
+  criteria: |
+    The SQL must include a -- [params] comment block declaring at least one parameter.
+    Good parameters for this query would be date ranges or months_ago.
+    The query should count users grouped by date.
+    Rate 10 if params block exists with date/time params, 5 if query works but has no params, 0 if invalid SQL.

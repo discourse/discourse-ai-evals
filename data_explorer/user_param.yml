@@ -1,0 +1,15 @@
+id: user_param
+name: Query with user_id parameter
+description: Should use user_id param type
+feature: data_explorer:query_generation
+args:
+  input: "Show me all posts by a specific user"
+expected_output_regex: "\\[params\\]"
+judge:
+  pass_rating: 7
+  criteria: |
+    The SQL must:
+    1. Have a -- [params] block with a user_id or user parameter
+    2. Filter posts by that user
+    3. Not end with a semicolon
+    Rate 10 if uses user_id param type, 7 if uses int param for user, 3 if no params.

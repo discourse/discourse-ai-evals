@@ -1,0 +1,15 @@
+id: category_param
+name: Query with category_id parameter
+description: Should use category_id param type
+feature: data_explorer:query_generation
+args:
+  input: "Show me all topics in a specific category"
+expected_output_regex: "\\[params\\]"
+judge:
+  pass_rating: 7
+  criteria: |
+    The SQL must:
+    1. Have a -- [params] block with a category_id parameter
+    2. Filter topics by category
+    3. Not end with a semicolon
+    Rate 10 if uses category_id param type, 7 if uses int param for category, 3 if no params.

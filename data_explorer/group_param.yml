@@ -1,0 +1,15 @@
+id: group_param
+name: Query with group_id parameter
+description: Should use group_id param type
+feature: data_explorer:query_generation
+args:
+  input: "List all members of a specific group with their last seen date"
+expected_output_regex: "\\[params\\]"
+judge:
+  pass_rating: 7
+  criteria: |
+    The SQL must:
+    1. Have a -- [params] block with a group_id or group_name parameter
+    2. Join group_users and users tables
+    3. Not end with a semicolon
+    Rate 10 if uses group_id param type, 7 if uses string for group name, 3 if no params.

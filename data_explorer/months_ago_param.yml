@@ -1,0 +1,7 @@
+id: months_ago_param
+name: Monthly param pattern
+description: Should use a param for relative date filtering
+feature: data_explorer:query_generation
+args:
+  input: "Top 100 active topics for a given month"
+expected_output_regex: "\\[params\\]"

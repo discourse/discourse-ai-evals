@@ -1,0 +1,15 @@
+id: boolean_param
+name: Query with boolean parameter
+description: Should use boolean param for optional filtering
+feature: data_explorer:query_generation
+args:
+  input: "Show me reply counts by group members, with an option to include PMs"
+expected_output_regex: "\\[params\\]"
+judge:
+  pass_rating: 7
+  criteria: |
+    The SQL must:
+    1. Have a -- [params] block with a boolean parameter for including PMs
+    2. Use the boolean param to conditionally filter by archetype
+    3. Not end with a semicolon
+    Rate 10 if has boolean param that controls PM inclusion, 5 if has params but no boolean, 3 if no params.
