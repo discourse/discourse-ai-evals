@@ -1,0 +1,56 @@
+id: translate_raw_german_long_body_with_special_quotes
+name: Translate a long German post end-to-end without breaking on quoted concepts
+description: |
+  Reproduces the regression reported on meta topic 402812 by @MarkDoerr: the
+  German AI translation of the "Introducing nested replies" announcement
+  truncates after a few paragraphs, dropping the rest of the body.
+
+  The input here is the exact raw text of meta topic 402812 post #1
+  (@markvanlan, 2026-05-12) so the eval exercises the same content that
+  failed in production.
+feature: translation:post_raw_translator
+args:
+  target_locale: de
+  input: |
+    Meaningful conversation happens when everyone in the room has heard each other's thoughts, and a flat, linear timeline has always been the best way to make that possible on Discourse. But flat doesn't fit every community. In larger, faster-moving forums, thousands of replies on a single timeline make it impossible for anyone to keep up. That's why we've been cautiously experimenting with a fully nested reply view this year, and we think it's a great fit for communities that have outgrown the flat format.
+
+    What started as an experimental plugin, shifted to a project shipping directly in Discourse. Here is a peek at what a nested topic looks like at the moment:
+
+    ![Screenshot 2026-05-12 at 17-11-26 Discourse Meta|524x500](upload://iLu7ihypBmcior7uhiZE8ELbAPW.png)
+
+
+    When a specific post is linked to (from a share link or notification), we have a single-thread view:
+
+    ![Screenshot 2026-05-12 at 17-09-12 Discourse Meta|524x500](upload://fKz6v5F5V37A0hWHhnovlamRjdl.png)
+
+
+    ## Enable it on your site
+
+    The site settings to enable this feature are available in the admin interface. Navigate to the "Nested Replies" section to control the feature, default sort modes, max depth, and more.
+
+    ## Roadmap
+
+    At the time of writing, it's early days for nested replies. The roadmap is not fully fleshed out. A few things we know we will do:
+
+    * Better mobile experience
+
+    * Rethink the topic timeline for nested view. At the moment there is no timeline on topics while in nested replies mode
+
+    * Add at least one new ordering mode for posts with age decay, similar to our "Hot" for topic lists.
+
+    ## Limitations
+
+    * When nesting is enabled for a category, pre-existing topics stay in flat mode. Each topic can individually toggled from the admin wrench, but there is currently no way to convert an existing category to nested mode.
+
+    ## We'd love your feedback
+
+    We need your feedback and experience using this feature to help inform it's development. If this looks like a good fit for your community, give it a go, and tell us what you and your users think!
+judge:
+  pass_rating: 8
+  criteria: |
+    - Produce a complete German translation of every paragraph of the source. No paragraph, heading, or bullet may be silently dropped, merged, or summarised. The output must include German renderings of: the opening paragraph, the "Enable it on your site" section, the "Roadmap" section (with its 3 bullets), the "Limitations" section (with its 1 bullet), and the "We'd love your feedback" section.
+    - Preserve all four Markdown headings (`## Enable it on your site`, `## Roadmap`, `## Limitations`, `## We'd love your feedback`) translated into German but kept as `##` headings.
+    - Preserve both `![...](upload://...)` image references verbatim — including the `upload://iLu7ihypBmcior7uhiZE8ELbAPW.png` and `upload://fKz6v5F5V37A0hWHhnovlamRjdl.png` URLs and the `|524x500` size hints. Image alt text may be translated.
+    - Preserve all bullet markers (`*`) and indentation.
+    - Output must be in German ({{target_locale}}) — no untranslated English sentences (proper nouns like "Discourse" stay as-is).
+    - If the output ends before reaching the "We'd love your feedback" section or contains fewer than the source's structural elements (4 `##` headings, 4 bullets total, 2 images), the score must be 1.

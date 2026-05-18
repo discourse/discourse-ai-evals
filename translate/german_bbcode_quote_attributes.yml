@@ -1,0 +1,36 @@
+id: translate_raw_german_bbcode_quote_attributes
+name: Translate raw text to German preserving BBCode quote attributes
+description: |
+  Reproduces the regression reported on meta topic 402420 by @Moin: when a post
+  containing `[quote="user, post:N, topic:M"]` blocks is translated to German,
+  the AI rewrites the attribute keys (post -> Beitrag, topic -> Thema), which
+  breaks the in-post quote metadata that renders the source link.
+
+  The input here is the exact raw of meta topic 333119 post #6 (@Moin,
+  2026-05-07) — the actual source whose German translation Moin screenshotted
+  in the bug report.
+feature: translation:post_raw_translator
+args:
+  target_locale: de
+  input: |-
+    [quote="manu-p, post:5, topic:333119"]
+    but things have changed since then.
+    [/quote]
+
+    I don't think anything has changed. It's still about posts you read, topics you visit, and time you spend reading. No posting is needed for TL1.
+
+    You must meet all the requirements. See also:
+
+    [quote="chapoi, post:1, topic:396792"]
+    **Do I have to comply with all requirements per level?**
+    Yes. The listed requirements are “and”; you have to fulfill all of them.
+    [/quote]
+judge:
+  pass_rating: 8
+  criteria: |
+    - Translate prose and inner quote contents into {{target_locale}}.
+    - CRITICAL: keep BBCode attribute keys `post:` and `topic:` literal in English inside every `[quote="..."]` header. Do NOT translate them to `Beitrag:`, `Thema:`, `Posten:`, etc. Usernames (`manu-p`, `chapoi`) and numeric ids (`5`, `333119`, `1`, `396792`) must remain unchanged.
+    - Preserve the `[quote ...]...[/quote]` tag names themselves in English; do not rename to `[zitat]`, `[Zitat]`, or similar.
+    - Preserve bold Markdown markers (`**...**`) around the question in the second quote.
+    - Both quote headers must appear verbatim: `[quote="manu-p, post:5, topic:333119"]` and `[quote="chapoi, post:1, topic:396792"]`. If the output uses `Beitrag:` or `Thema:` anywhere, the score must be 1.
+    - No commentary, no summarisation; output German only.
