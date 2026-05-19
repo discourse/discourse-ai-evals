@@ -1,0 +1,20 @@
+id: start_end_date_params
+name: Date range uses start_date and end_date params
+description: |
+  When the user asks for a date range, the agent should declare two date params
+  named start_date and end_date with castable ISO defaults, and cast them via CAST().
+feature: data_explorer:query_generation
+args:
+  input: "Show me topic counts created between two dates"
+expected_output_regex: "\\[params\\]"
+judge:
+  pass_rating: 8
+  criteria: |
+    Grade the generated SQL:
+    1. Has a `-- [params]` block declaring two date params (any two; ideally named `start_date` and `end_date`).
+    2. Defaults are valid ISO dates in YYYY-MM-DD form, not natural-language ("today", "3 months ago", "14 jul 2015").
+    3. Date params are cast via `CAST(:param AS date)` (or AS timestamp) when used; NEVER `:param::date`.
+    4. The SQL does not end with a semicolon.
+
+    Rate 10 if all four pass. Rate 5 if a param is missing OR a default is natural-language.
+    Rate 3 if `:param::type` casting is used. Rate 1 if no params block at all.

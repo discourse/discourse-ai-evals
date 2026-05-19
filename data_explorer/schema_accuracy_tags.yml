@@ -1,0 +1,20 @@
+id: schema_accuracy_tags
+name: Tags column is `name`, not `tag_name`
+description: |
+  The agent should use the `tags.name` column (the actual column in the schema).
+  Meta thread reported the small LLM using `tags.tag_name` / `tt.tag_name`, which
+  doesn't exist. The agent has a schema tool; this case asserts it doesn't fabricate
+  the column.
+feature: data_explorer:query_generation
+args:
+  input: "List topics that have a given tag"
+expected_output_regex: "FROM\\s+topics"
+judge:
+  pass_rating: 8
+  criteria: |
+    The candidate output is the generated SQL. Fail (rate 3 or below) if the SQL references
+    `tag_name` as a column on any table — e.g. `tg.tag_name`, `tags.tag_name`, `tt.tag_name`,
+    `topic_tags.tag_name`. The real tag-name column is `tags.name`.
+
+    Pass (rate 9–10) if the SQL references `tags.name` / `<alias>.name` correctly to filter
+    topics by tag.

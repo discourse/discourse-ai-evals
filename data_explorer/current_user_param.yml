@@ -1,0 +1,10 @@
+id: current_user_param
+name: Uses current_user_id for "me" queries
+description: |
+  When the user's prompt is first-person ("my posts", "queries about me"), the
+  agent should use the `current_user_id` system param, not a hardcoded user_id
+  or `:user = system`.
+feature: data_explorer:query_generation
+args:
+  input: "Show my posts and their reply counts"
+expected_output_regex: "current_user_id"
