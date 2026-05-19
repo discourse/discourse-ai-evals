@@ -1,0 +1,23 @@
+id: name_and_description
+name: Name fits the UI cap and description is informative
+description: |
+  The `name` field is shown in the Data Explorer UI which has a tight width;
+  it should fit in roughly 60 characters. The `description` should be at least
+  a short sentence so users picking the query later understand what it does.
+  The judge grades the `extra description` field below — not the SQL.
+feature: data_explorer:query_generation
+args:
+  input: "Daily reply count by trust level for the last 30 days"
+judge:
+  pass_rating: 7
+  criteria: |
+    The candidate output below is the generated SQL. Ignore the SQL itself —
+    instead grade the `extra name` and `extra description` fields the agent produced.
+
+    Rate 10 if:
+      - `extra name` is <= 60 characters AND
+      - `extra description` is a one-sentence description (at least 5 words) that names
+        what the query returns AND what the filters/parameters do.
+
+    Rate 7 if description describes the result clearly but omits parameter info.
+    Rate 3 if name > 60 chars OR description is vague / restates the prompt verbatim.

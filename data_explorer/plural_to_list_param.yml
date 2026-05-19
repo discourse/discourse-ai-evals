@@ -1,0 +1,10 @@
+id: plural_to_list_param
+name: Plural prompt uses list-style params
+description: |
+  When the prompt uses plural ("categories", "tags"), the agent should use a
+  list-style param (e.g. `string_list`, `int_list`) rather than a single-value
+  param, so users can filter on multiple values.
+feature: data_explorer:query_generation
+args:
+  input: "Show topics that match selected categories and tags"
+expected_output_regex: "(int_list|string_list|user_list|group_list)"

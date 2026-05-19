@@ -1,0 +1,34 @@
+id: optional_categories_and_tags
+name: Optional plural filters — null prefix, list params, no tag_name hallucination
+description: |
+  When the user asks for an optional, plural set of filters ("optionally selected
+  categories and tags"), the agent must get THREE things right at once:
+    1. Optional params declared with the `null` prefix (e.g. `-- null category_id :category`),
+       not `:category = #null` as a default value.
+    2. No fabricated `tag_name` column (real column on `tags` is `name`).
+    3. Both "categories" AND "tags" handled as list-style params, since the prompt was plural.
+
+  Reproduces the scenario reported at
+  https://meta.discourse.org/t/first-impressions-on-ai-enabled-data-explorer/401212
+  where the agent failed all three on the same query.
+feature: data_explorer:query_generation
+args:
+  input: "Get topic IDs for optionally selected categories and tags."
+judge:
+  pass_rating: 8
+  criteria: |
+    Grade the SQL on three things. All three must pass to score 10.
+    1. Optional params: every declared param must use the `null` prefix (e.g. `-- null category_id :category`).
+       It must NOT use `= #null` as a default value (e.g. `-- category_id :category = #null` is wrong).
+    2. Schema accuracy: the SQL must NOT reference `tag_name` as a column on any table (the actual
+       column on `tags` is `name`). Any occurrence of `tg.tag_name`, `tags.tag_name`,
+       `tt.tag_name`, or `topic_tags.tag_name` is a hard fail.
+    3. Plural handling: BOTH "categories" and "tags" should be handled as list-style params
+       (`int_list`, `category_id` accepting multiple values, `string_list`, etc.), since the
+       prompt was plural.
+
+    Scoring:
+    - 10 = all three correct.
+    - 7 = #1 and #2 correct, but #3 only handles one of the two as a list.
+    - 4 = at most one of the three correct.
+    - 1 = none correct.
