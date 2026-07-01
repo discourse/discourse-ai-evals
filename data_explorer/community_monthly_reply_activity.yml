@@ -1,0 +1,32 @@
+id: community_monthly_reply_activity
+name: Community activity update
+description: Generates a sound community activity query from a non-technical prompt
+feature: data_explorer:query_generation
+args:
+  input: |
+    I'm putting together a community update and want to understand how regular members are helping keep the community active.
+judge:
+  pass_rating: 8
+  criteria: |
+    The candidate output is SQL for Discourse Data Explorer.
+
+    Rate the SQL for semantic soundness, not merely whether it runs.
+
+    A passing answer must:
+    1. Return aggregate community-level metrics, not a per-user leaderboard.
+    2. Use a time trend, preferably grouped by month, unless the query otherwise gives a clear aggregate community update.
+    3. Focus on regular community members: exclude admins, moderators, staged users, and system users.
+    4. Include at least one strong participation metric based on posts, such as total replies, distinct reply authors, active posting members, or topics created.
+    5. If counting replies, count only normal replies using posts.post_number > 1 and posts.post_type = 1.
+    6. Exclude deleted posts and deleted topics for post/topic activity.
+    7. Exclude private messages using topics.archetype = 'regular' for public community activity.
+    8. Exclude private/restricted categories using categories.read_restricted = false for public community activity.
+    9. Use relevant joins through posts/topics/users/categories when those tables are needed for the selected metrics.
+    10. Avoid unrelated individual-user detail columns unless the prompt asks for people, shoutouts, or a leaderboard.
+
+    Prefer queries that declare Data Explorer date params named :start_date and :end_date and use CAST(:param AS date), but do not fail an otherwise semantically sound query solely for using literal dates from the prompt.
+
+    Rate 10 if all criteria are met and the SQL uses clean Data Explorer params.
+    Rate 8-9 if the query is a useful aggregate community activity update but has minor omissions or extra metrics.
+    Rate 5-7 if the query is directionally useful but misses one important exclusion or uses a weak metric mix.
+    Rate 4 or below if it is mainly a user leaderboard, includes staff/private/deleted content, or does not measure regular member activity.
