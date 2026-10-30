@@ -1,0 +1,8 @@
+id: appearance_styles_edit_keeps_existing
+name: "Edit keeps existing styles"
+description: "Editing a theme keeps the styles that weren't asked to change"
+feature: custom:appearance_styles
+args:
+  input: "Also add a soft shadow to topic rows on hover."
+  current_styles: {"variables": {"--d-border-radius": "8px"}}
+expected_output_regex: "\\A(?=.*\"result\":\"styles\")(?=.*\"\\-\\-d\\-border\\-radius\":\"8px\")(?=.*\"box-shadow\":)"

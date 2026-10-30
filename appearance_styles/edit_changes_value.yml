@@ -1,0 +1,8 @@
+id: appearance_styles_edit_changes_value
+name: "Edit changes a value"
+description: "Editing a value replaces it"
+feature: custom:appearance_styles
+args:
+  input: "Make the corners even rounder than they are now."
+  current_styles: {"variables": {"--d-border-radius": "8px"}}
+expected_output_regex: "\\A(?=.*\"result\":\"styles\")(?=.*\"\\-\\-d\\-border\\-radius\":)(?!.*\"\\-\\-d\\-border\\-radius\":\"8px\")"
