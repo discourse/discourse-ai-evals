@@ -1,0 +1,7 @@
+id: appearance_styles_zebra_rows
+name: "Alternating rows"
+description: "Alternating row backgrounds should use the odd or even state"
+feature: custom:appearance_styles
+args:
+  input: "Alternate the background color of topic list rows so they're easier to scan."
+expected_output_regex: "\\A(?=.*\"result\":\"styles\")(?=.*\"area\":\"topic_list_item\")(?=.*\"state\":\"(odd|even)\")"

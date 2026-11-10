@@ -1,0 +1,7 @@
+id: appearance_styles_refuse_custom_font
+name: "Custom font file"
+description: "Uploaded fonts aren't styles"
+feature: custom:appearance_styles
+args:
+  input: "Use our brand font, we have the .woff2 file."
+expected_output_regex: "\\A(?=.*\"result\":\"unsupported\")(?=.*\"unsupported\":\\[\"[^\"])"

@@ -1,0 +1,7 @@
+id: appearance_styles_dark_cards
+name: "Dark category boxes"
+description: "Dark category boxes need light text"
+feature: custom:appearance_styles
+args:
+  input: "Give the category boxes a dark navy background."
+expected_output_regex: "\\A(?=.*\"result\":\"styles\")(?=.*(\"area\":\"category_box\"|\"\\-\\-d\\-category\\-box\\-background\\-color\"))"
