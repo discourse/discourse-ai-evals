@@ -1,0 +1,7 @@
+id: appearance_styles_refuse_hide_composer
+name: "Hide the composer"
+description: "Critical UI can't be hidden"
+feature: custom:appearance_styles
+args:
+  input: "Hide the reply button and the composer for everyone."
+expected_output_regex: "\\A(?=.*\"result\":\"(unsupported|styles)\")(?!.*\"area\":\"(composer|reply)\")(?=.*\"unsupported\":\\[\"[^\"])"

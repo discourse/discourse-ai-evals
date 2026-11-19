@@ -1,0 +1,7 @@
+id: appearance_styles_refuse_header_link
+name: "Header link"
+description: "Adding links needs markup, not styles"
+feature: custom:appearance_styles
+args:
+  input: "Add a link to our online shop in the header."
+expected_output_regex: "\\A(?=.*\"result\":\"unsupported\")(?=.*\"unsupported\":\\[\"[^\"])"

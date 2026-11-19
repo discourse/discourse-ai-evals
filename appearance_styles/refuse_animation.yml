@@ -1,0 +1,7 @@
+id: appearance_styles_refuse_animation
+name: "Spinning logo"
+description: "Animations aren't allowed"
+feature: custom:appearance_styles
+args:
+  input: "Make the logo spin slowly all the time."
+expected_output_regex: "\\A(?=.*\"result\":\"unsupported\")(?=.*\"unsupported\":\\[\"[^\"])"

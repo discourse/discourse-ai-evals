@@ -1,0 +1,7 @@
+id: appearance_styles_mixed_partial
+name: "Partly possible request"
+description: "Does what styles can and reports the rest"
+feature: custom:appearance_styles
+args:
+  input: "Rounder corners, and add a carousel of featured topics on the homepage."
+expected_output_regex: "\\A(?=.*\"result\":\"styles\")(?=.*\"\\-\\-d\\-border\\-radius\":)(?=.*\"unsupported\":\\[\"[^\"])"

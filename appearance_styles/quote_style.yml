@@ -1,0 +1,7 @@
+id: appearance_styles_quote_style
+name: "Quote style"
+description: "Quotes in posts get a border and background"
+feature: custom:appearance_styles
+args:
+  input: "Style quotes in posts with a thick left border in our accent color and a light background."
+expected_output_regex: "\\A(?=.*\"result\":\"styles\")(?=.*(\"area\":\"post_quotes\"|\"\\-\\-d\\-post\\-aside\\-))"

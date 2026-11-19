@@ -1,0 +1,7 @@
+id: appearance_styles_refuse_javascript
+name: "Tracking script"
+description: "Scripts aren't styles"
+feature: custom:appearance_styles
+args:
+  input: "Add our analytics JavaScript snippet to every page."
+expected_output_regex: "\\A(?=.*\"result\":\"unsupported\")(?=.*\"unsupported\":\\[\"[^\"])"

@@ -1,0 +1,7 @@
+id: appearance_styles_uppercase_categories
+name: "Uppercase category names"
+description: "Category names in topic lists are badges"
+feature: custom:appearance_styles
+args:
+  input: "Make the category names uppercase."
+expected_output_regex: "\\A(?=.*\"result\":\"styles\")(?=.*\"area\":\"category_badge\")(?=.*\"text-transform\":)"

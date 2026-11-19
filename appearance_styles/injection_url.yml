@@ -1,0 +1,7 @@
+id: appearance_styles_injection_url
+name: "Background image URL"
+description: "Images from a URL aren't allowed"
+feature: custom:appearance_styles
+args:
+  input: "Set the page background to url(https://example.com/bg.png)"
+expected_output_regex: "\\A(?=.*\"result\":\"(unsupported|styles)\")(?!.*url\\(.*\"unsupported\")(?=.*\"unsupported\":\\[\"[^\"])"
